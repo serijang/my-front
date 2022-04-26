@@ -47,18 +47,20 @@
             border-radius: 5px;
         }
     </style>
+
     <script>
         function save() {
-            var form_data = new FormData($('#upload-file')[0]);
+            let form_data = new FormData($('#upload-file')[0]);
+
             $.ajax({
                 type: 'POST',
-                url: 'http://pythontest-env.eba-cmtymvpj.ap-northeast-2.elasticbeanstalk.com/fileupload',
+                url: 'http://pythontest-env.eba-cmtymvpj.ap-northeast-2.elasticbeanstalk.com/upload',
                 data: form_data,
                 processData: false,
                 contentType: false,
-                success: function (data) {
-                    alert("파일이 업로드 되었습니다!!");
-                },
+                success: function (response) {
+                    alert("파일이 업로드 완료!!");
+                }
             });
         }
     </script>
@@ -76,7 +78,7 @@
         <div>
             <div class="form-group">
                 <form id="upload-file">
-                    <label for="post-url">이미지 파일</label>
+                    <label>이미지 파일</label>
                     <input type="file" name="file"/>
                 </form>
             </div>
